@@ -12,7 +12,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-    private static long nextId = 1;
 
     @Autowired
     private ProductService service;
@@ -26,7 +25,6 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
-        product.setProductId("" + nextId++);
         service.create(product);
         return "redirect:/product/list";
     }
