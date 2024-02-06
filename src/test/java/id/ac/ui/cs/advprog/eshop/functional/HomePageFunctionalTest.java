@@ -33,7 +33,7 @@ public class HomePageFunctionalTest {
 
     @BeforeEach
     void setUp() {
-        baseUrl = String.format("%s:%d/product/list", testBaseUrl, serverPort);
+        baseUrl = String.format("%s:%d", testBaseUrl, serverPort);
     }
 
     @Test
