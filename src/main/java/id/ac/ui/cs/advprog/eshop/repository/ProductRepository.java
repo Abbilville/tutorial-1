@@ -29,18 +29,24 @@ public class ProductRepository {
         return null;
     }
 
-    public void update(String id, Product updateProduct) {
+    public Product update(Product updateProduct) {
         for (Product product : productData) {
-            if (product.getProductId().equals(id)) {
+            if (product.getProductId().equals(updateProduct.getProductId())) {
+                if (updateProduct.getProductQuantity() < 0) {
+                    updateProduct.setProductQuantity(0);
+                }
+
                 product.setProductName(updateProduct.getProductName());
                 product.setProductQuantity(updateProduct.getProductQuantity());
-                return;
+                break;
             }
         }
+        return updateProduct;
     }
 
-    public void delete(String id) {
-        Product product = findById(id);
-        productData.remove(product);
+    public Product delete(String productId) {
+        Product deletedProduct = findById(productId);
+        productData.remove(deletedProduct);
+        return deletedProduct;
     }
 }
