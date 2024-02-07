@@ -68,4 +68,34 @@ public class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
+
+        Product retrievedProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNull(retrievedProduct);
+    }
+
+    @Test
+    void testEditProductNonExistent() {
+        Product updatedProduct = new Product();
+        updatedProduct.setProductId("nonexistent-id");
+        updatedProduct.setProductName("Sampo Cap Bambang Baru");
+        updatedProduct.setProductQuantity(150);
+
+        assertDoesNotThrow(() -> productRepository.update(updatedProduct));
+    }
+
+    @Test
+    void testDeleteProductNonExistent() {
+        assertDoesNotThrow(() -> productRepository.delete("nonexistent-id"));
+    }
 }
