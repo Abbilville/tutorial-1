@@ -2,30 +2,30 @@ name: SonarCloud analysis
 
 on:
   push:
+    branches: [ main ]
   pull_request:
-
-permissions:
-  pull-requests: read
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  Analysis:
+  sonarcloud-analysis:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the Git repository
-        uses: actions/checkout@v4
-      - name: Set up Java toolchain
-        uses: actions/setup-java@v4
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
         with:
-          distribution: "temurin"
-          java-version: "21"
-          cache: "gradle"
-      - name: Analyze with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
+          java-version: '21'  # Set Java version to 21
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          args:
+          args: >
             -Dsonar.projectKey=Abbilville_tutorial-1
             -Dsonar.organization=abbilville
