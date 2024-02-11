@@ -29,3 +29,4 @@ jobs:
           args:
             -Dsonar.projectKey=Abbilville_tutorial-1
             -Dsonar.organization=abbilville
+            -X
