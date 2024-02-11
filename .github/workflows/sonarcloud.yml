@@ -19,6 +19,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'  # Set Java version to 21
+          distribution: 'temurin'
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite-settings: true
+          job-status: success
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
