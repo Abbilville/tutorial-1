@@ -3,15 +3,6 @@ plugins {
     jacoco
     id("org.springframework.boot") version "3.2.2"
     id("io.spring.dependency-management") version "1.1.4"
-    id("org.sonarqube") version "4.4.1.3373"
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "Abbilville_tutorial-1")
-        property("sonar.organization", "abbilville")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
 }
 
 group = "id.ac.ui.cs.advprog"
@@ -19,6 +10,9 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 configurations {
@@ -83,9 +77,4 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
-
-    reports {
-        html.required = true
-        xml.required = true
-    }
 }
