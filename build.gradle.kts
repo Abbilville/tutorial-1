@@ -1,8 +1,19 @@
 plugins {
     java
     jacoco
+    id("org.sonarqube") version "4.4.1.3373"
     id("org.springframework.boot") version "3.2.2"
     id("io.spring.dependency-management") version "1.1.4"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Abbilville_tutorial-1")
+        property("sonar.organization", "abbilville")
+        property("sonar.host.url", "https://sonarcloud.io")
+
+        property("sonar.coverage.jacoco.xmlReportPaths", "${project.projectDir}/build/reports/jacoco/test/jacocoTestReport.xml")
+    }
 }
 
 group = "id.ac.ui.cs.advprog"
@@ -77,4 +88,9 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
