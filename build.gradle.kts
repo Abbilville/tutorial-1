@@ -11,8 +11,6 @@ sonar {
         property("sonar.projectKey", "Abbilville_tutorial-1")
         property("sonar.organization", "abbilville")
         property("sonar.host.url", "https://sonarcloud.io")
-
-        property("sonar.coverage.jacoco.xmlReportPaths", "${project.projectDir}/build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
 
