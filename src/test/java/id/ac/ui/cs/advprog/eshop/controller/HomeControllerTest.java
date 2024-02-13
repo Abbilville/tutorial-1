@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HomeControllerTest {
 
     @Test
-    public void testHomePage() {
+    void testHomePage() {
         HomeController homeController = new HomeController();
         String viewName = homeController.homePage();
         assertEquals("HomePage", viewName);

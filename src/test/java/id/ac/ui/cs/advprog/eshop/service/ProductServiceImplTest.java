@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 
-public class ProductServiceImplTest {
+class ProductServiceImplTest {
 
     @Mock
     private ProductRepository productRepository;
@@ -29,7 +29,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testCreateProduct() {
+    void testCreateProduct() {
         Product product = new Product();
         product.setProductName("Test Product");
         product.setProductQuantity(10);
@@ -42,7 +42,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testFindAllProducts() {
+    void testFindAllProducts() {
         List<Product> productList = new ArrayList<>();
         Product product1 = new Product();
         Product product2 = new Product();
@@ -56,7 +56,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testFindProductById() {
+    void testFindProductById() {
         Product product = new Product();
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
 
@@ -68,7 +68,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testUpdateProduct() {
+    void testUpdateProduct() {
         Product product = new Product();
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product.setProductName("Test Product");
@@ -82,7 +82,7 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void testDeleteProduct() {
+    void testDeleteProduct() {
         Product product = new Product();
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
         product.setProductName("Test Product");
