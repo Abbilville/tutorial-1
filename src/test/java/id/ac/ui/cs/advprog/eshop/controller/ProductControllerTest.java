@@ -39,7 +39,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testCreateProductPage() {
+    void testCreateProductPage() {
         String viewName = productController.createProductPage(model);
 
         assertEquals("CreateProduct", viewName);
@@ -47,7 +47,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testCreateProductPost() {
+    void testCreateProductPost() {
         String redirectURL = productController.createProductPost(product, model);
 
         assertEquals("redirect:/product/list", redirectURL);
@@ -55,7 +55,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testProductListPage() {
+    void testProductListPage() {
         List<Product> productList = new ArrayList<>();
         productList.add(product);
         when(productService.findAll()).thenReturn(productList);
@@ -67,7 +67,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testEditProductPage() {
+    void testEditProductPage() {
         String productId = "eb558e9f-1c39-460e-8860-71af6af63bd6";
         when(productService.findById(productId)).thenReturn(product);
 
@@ -78,7 +78,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testEditProductPut() {
+    void testEditProductPut() {
         String redirectURL = productController.editProductPut(product);
 
         assertEquals("redirect:list", redirectURL);
@@ -86,7 +86,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void testDeleteProduct() {
+    void testDeleteProduct() {
         String productId = "eb558e9f-1c39-460e-8860-71af6af63bd6";
 
         String redirectURL = productController.deleteProduct(productId);

@@ -20,7 +20,7 @@ class EshopApplicationTests {
     }
 
     @Test
-    public void testMain() {
+    void testMain() {
         application.main(new String[] {});
     }
 
