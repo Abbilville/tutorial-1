@@ -36,6 +36,7 @@ Setelah menulis refleksi pertama ini saya jadi kepikiran untuk memperbaiki kode 
 Selama mengerjakan tutorial 2 ini, beberapa code quality issues saya perbaiki antara lain:
 1. Memperbaiki masalah executable permission issue pada file gradlew di Dockerfile dengan memberikan izin yang sesuai menggunakan perintah chmod +x gradlew
 2. Menyesuaikan versi Java yang digunakan dalam analisis SonarCloud dengan mengubah konfigurasi untuk menggunakan Java 21, karena versi Java sebelumnya sudah tidak didukung lagi
-3. Menambahkan konfigurasi yang diperlukan dalam file GitHub Actions workflow untuk memastikan analisis SonarCloud berjalan dengan benar, termasuk spesifikasi distribusi Java yang digunakan.
+3. Menambahkan konfigurasi yang diperlukan dalam file GitHub Actions workflow untuk memastikan analisis SonarCloud berjalan dengan benar, termasuk spesifikasi distribusi Java yang digunakan
+4. Menghilangkan public modifier pada file yang berhubungan dengan test, karena best implementation pada test yaitu menggunakan default modifier
 
 Terhadap CI/CD workflows (GitHub)/pipelines (GitLab), implementasi saat ini memenuhi definisi Continuous Integration (CI) dan Continuous Deployment (CD). Hal ini karena setiap kali ada perubahan kode yang dipush, workflow CI dijalankan secara otomatis untuk memeriksa kualitas kode, menjalankan tes, dan menerapkan praktik-praktik terbaik. Selanjutnya, jika tes berhasil, kode akan dideploy secara otomatis ke aplikasi deploy yang digunakan, dalam hal ini saya menggunakan Koyeb. Hal tersebut menciptakan workflow yang otomatis dan dapat digunakan dalam SDLC.
