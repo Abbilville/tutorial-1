@@ -11,7 +11,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/car")
-class CarController {
+public class CarController {
+
     @Autowired
     private CarService carService;
 
@@ -32,7 +33,7 @@ class CarController {
     public String carListPage(Model model) {
         List<Car> allCars = carService.findAll();
         model.addAttribute("cars", allCars);
-        return "CarList";
+        return "ListCar";
     }
 
     @GetMapping("/editCar/{carId}")
