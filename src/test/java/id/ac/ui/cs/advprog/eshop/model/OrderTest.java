@@ -3,7 +3,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 
 import static org.junit.jupiter.api.Assertions.*;
 
