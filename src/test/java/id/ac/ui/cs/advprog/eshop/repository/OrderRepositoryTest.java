@@ -4,13 +4,11 @@ import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -60,7 +58,7 @@ public class OrderRepositoryTest {
     void testSaveUpdate() {
         Order order = orders.get(1);
         orderRepository.save(order);
-        Order newOrder = new Order(order.getId(), order.getProducts(), order.getOrderTime()
+        Order newOrder = new Order(order.getId(), order.getProducts(), order.getOrderTime(),
             order.getAuthor(), OrderStatus.SUCCESS.getValue());
         Order result = orderRepository.save(newOrder);
 
