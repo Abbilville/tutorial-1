@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class EshopApplicationTests {
 
+    @SuppressWarnings("unused")
     @Autowired
     private EshopApplication application;
 
@@ -19,7 +20,7 @@ class EshopApplicationTests {
 
     @Test
     void testMain() {
-        application.main(new String[] {});
+        EshopApplication.main(new String[] {});
     }
 
 }
