@@ -35,11 +35,8 @@ class BankPaymentTest {
         product2.setProductQuantity(1);
         products.add(product2);
 
-        order= new Order(
-            "dbd4aff4-9a7f-4603-92c2-eaf529271cc9", 
-            products, 
-            1708560000L, 
-            "Safira Sudrajat"
+        order= new Order("dbd4aff4-9a7f-4603-92c2-eaf529271cc9", 
+            products, 1708560000L, "Safira Sudrajat"
         );
 
         paymentData.put("bankName", "BCA");
@@ -48,12 +45,8 @@ class BankPaymentTest {
 
     @Test
     void testCreateBankPaymentPendingStatus() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData);
         assertSame(order, payment.getOrder());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals("e45d7d21-fd29-4533-a569-abbe0819579a", payment.getId());
@@ -63,13 +56,8 @@ class BankPaymentTest {
 
     @Test
     void testCreateBankPaymentSuccessStatus() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData, 
-            PaymentStatus.SUCCESS.getValue()
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData, PaymentStatus.SUCCESS.getValue());
         assertSame(order, payment.getOrder());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals("e45d7d21-fd29-4533-a569-abbe0819579a", payment.getId());
@@ -79,13 +67,8 @@ class BankPaymentTest {
 
     @Test
     void testCreateBankPaymentRejectedStatus() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData, 
-            PaymentStatus.REJECTED.getValue()
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData, PaymentStatus.REJECTED.getValue());
         assertSame(order, payment.getOrder());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals("e45d7d21-fd29-4533-a569-abbe0819579a", payment.getId());
@@ -97,13 +80,8 @@ class BankPaymentTest {
     void testCreateBankPaymentInvalidStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData, 
-                "MEOW"
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData, "MEOW");
         });
     }
 
@@ -111,13 +89,8 @@ class BankPaymentTest {
     void testCreateBankPaymentNullStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData, 
-                null
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData, null);
         });
     }
 
@@ -135,36 +108,24 @@ class BankPaymentTest {
 
     @Test
     void testSetBankPaymentStatStatusToRejected() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData);
         payment.setStatus(PaymentStatus.REJECTED.getValue());
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
     void testSetBankPaymentStatStatusToPending() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData);
         payment.setStatus(PaymentStatus.PENDING.getValue());
         assertEquals(PaymentStatus.PENDING.getValue(), payment.getStatus());
     }
 
     @Test
     void testSetBankPaymentStatStatusToInvalid() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData);
         assertThrows(IllegalArgumentException.class, () -> {
             payment.setStatus("MEOW");
         });
@@ -172,12 +133,8 @@ class BankPaymentTest {
 
     @Test
     void testSetBankPaymentStatStatusToNull() {
-        Payment payment = new BankPayment(
-            "e45d7d21-fd29-4533-a569-abbe0819579a", 
-            PaymentMethod.BANK.getValue(), 
-            order, 
-            paymentData
-        );
+        Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+            PaymentMethod.BANK.getValue(), order, paymentData);
         assertThrows(IllegalArgumentException.class, () -> {
             payment.setStatus(null);
         });
@@ -187,12 +144,8 @@ class BankPaymentTest {
     void testCreateBankPaymentWithNullOrder() {
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                null, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), null, paymentData);
         });
     }
 
@@ -201,12 +154,8 @@ class BankPaymentTest {
         paymentData.clear();
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 
@@ -214,12 +163,8 @@ class BankPaymentTest {
     void testCreateBankPaymentWithNullPaymentData() {
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                null
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, null);
         });
     }
 
@@ -228,12 +173,8 @@ class BankPaymentTest {
         paymentData.put("bankName", "");
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 
@@ -242,12 +183,8 @@ class BankPaymentTest {
         paymentData.put("referenceCode", "");
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }   
 
@@ -256,12 +193,8 @@ class BankPaymentTest {
         paymentData.put("bankName", null);
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 
@@ -270,12 +203,8 @@ class BankPaymentTest {
         paymentData.put("referenceCode", null);
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 
@@ -285,12 +214,8 @@ class BankPaymentTest {
         paymentData.put("referenceCode", "");
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 
@@ -300,12 +225,8 @@ class BankPaymentTest {
         paymentData.put("referenceCode", null);
         assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Payment payment = new BankPayment(
-                "e45d7d21-fd29-4533-a569-abbe0819579a", 
-                PaymentMethod.BANK.getValue(), 
-                order, 
-                paymentData
-            );
+            Payment payment = new BankPayment("e45d7d21-fd29-4533-a569-abbe0819579a", 
+                PaymentMethod.BANK.getValue(), order, paymentData);
         });
     }
 }
